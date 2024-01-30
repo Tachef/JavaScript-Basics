@@ -39,6 +39,5 @@ function cinemaTickets(input) {
 
     let kidsPercentage = kidTickets / totalTickets * 100;
     console.log(`${kidsPercentage.toFixed(2)}% kids tickets.`);
-
 }
 cinemaTickets(["Taxi", "10", "standard", "kid", "student", "student", "standard", "standard", "End", "Scary Movie", "6", "student", "student", "student", "student", "student", "student", "Finish"]);
