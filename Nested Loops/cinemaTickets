@@ -1,1 +1,44 @@
 
+function cinemaTickets(input) {
+    let index = 0;
+    let command = input[index++];
+
+    let studentTickets = 0;
+    let standardTickets = 0;
+    let kidTickets = 0;
+    while (command !== "Finish") {
+        let movieName = command;
+        let freeSeats = Number(input[index++]);
+        let ticketType = input[index++];
+        let soldTickets = 0;
+
+        while (ticketType !== "End") {
+            switch (ticketType) {
+                case "standard": standardTickets++; break;
+                case "kid": kidTickets++; break;
+                case "student": studentTickets++; break;
+            }
+            soldTickets++;
+            if (soldTickets >= freeSeats) {
+                break;
+            }
+            ticketType = input[index++];
+        }
+        let percentage = soldTickets / freeSeats * 100;
+        console.log(`${movieName} - ${percentage.toFixed(2)}% full.`);
+        command = input[index++];
+    }
+    let totalTickets = standardTickets + studentTickets + kidTickets
+    console.log(`Total tickets: ${totalTickets}`)
+
+    let studentsPercentage = studentTickets / totalTickets * 100;
+    console.log(`${studentsPercentage.toFixed(2)}% student tickets.`);
+
+    let standardPercentage = standardTickets / totalTickets * 100;
+    console.log(`${standardPercentage.toFixed(2)}% standard tickets.`)
+
+    let kidsPercentage = kidTickets / totalTickets * 100;
+    console.log(`${kidsPercentage.toFixed(2)}% kids tickets.`);
+
+}
+cinemaTickets(["Taxi", "10", "standard", "kid", "student", "student", "standard", "standard", "End", "Scary Movie", "6", "student", "student", "student", "student", "student", "student", "Finish"]);
